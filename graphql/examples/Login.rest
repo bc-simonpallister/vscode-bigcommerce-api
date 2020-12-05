@@ -1,0 +1,29 @@
+@url={{$dotenv GRAPHQL_URL}}/graphql
+
+//  https://developer.bigcommerce.com/api-reference/storefront/graphql
+
+###
+
+POST {{url}}
+Authorization: Bearer {{$dotenv GRAPHQL_TOKEN}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query CategoryTree3LevelsDeep {
+  site {
+    categoryTree {
+      ...CategoryFields
+      children {
+        ...CategoryFields
+        children {
+          ...CategoryFields
+        }
+      }
+    }
+  }
+}
+fragment CategoryFields on CategoryTreeItem {
+  name
+  path
+  entityId
+}

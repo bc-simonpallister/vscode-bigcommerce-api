@@ -1,0 +1,52 @@
+@url={{$dotenv GRAPHQL_URL}}/graphql
+
+//  https://developer.bigcommerce.com/api-reference/storefront/graphql
+
+###
+
+POST {{url}}
+Authorization: Bearer {{$dotenv GRAPHQL_TOKEN}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+# Given a URL path, look it up to see if it matches a Product, Brand, or Category,
+# and fetch details about that object
+query LookUpUrl(
+  $urlPath: String!
+  # Use GraphQL Query Variables to provide a path
+) {
+  site {
+    route(path: $urlPath) {
+      node {
+        __typename
+        id
+        # A different response is returned based on which type of object was matched
+        ... on Category {
+          name
+          description
+        }
+        ... on Brand {
+          name
+          defaultImage {
+            url(width: 200)
+          }
+        }
+        ... on Product {
+          name
+          description
+          images {
+            edges {
+              node {
+                url(width: 500, height: 500)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+  "urlPath": "/new-arrivals"
+}

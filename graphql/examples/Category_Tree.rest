@@ -1,0 +1,31 @@
+@url={{$dotenv GRAPHQL_URL}}/graphql
+
+//  https://developer.bigcommerce.com/api-reference/storefront/graphql
+
+###
+
+POST {{url}}
+Authorization: Bearer {{$dotenv GRAPHQL_TOKEN}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+# Explicitly fetch the first 3 levels of the category tree,
+# and get a few fields on each category
+query CategoryTree3LevelsDeep {
+  site {
+    categoryTree {
+      ...CategoryFields
+      children {
+        ...CategoryFields
+        children {
+          ...CategoryFields
+        }
+      }
+    }
+  }
+}
+fragment CategoryFields on CategoryTreeItem {
+  name
+  path
+  entityId
+}
