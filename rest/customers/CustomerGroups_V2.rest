@@ -1,0 +1,101 @@
+@version=v2
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@customer_group_id=2
+
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/
+
+###
+
+//  Get All Customer Groups
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/getallcustomergroups
+GET {{url}}/customer_groups
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create a Customer Group
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/createacustomergroup
+POST {{url}}/customer_groups
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Student Discounts",
+  "discount_rules": [
+    {
+      "type": "price_list",
+      "price_list_id": 3
+    }
+  ]
+}
+
+###
+
+//  Delete All Customer Groups
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/deleteallcustomergroups
+DELETE {{url}}/customer_groups
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Get A Customer Group
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/getacustomergroup
+GET {{url}}/customer_groups/{{customer_group_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Delete a Customer Group
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/deleteacustomergroup
+DELETE {{url}}/customer_groups/{{customer_group_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Update a Customer Group
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/updateacustomergroup
+PUT {{url}}/customers/{{customer_group_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 2,
+  "name": "25% Discount",
+  "is_default": false,
+  "category_access": {
+    "type": "specific",
+    "categories": [
+      18,
+      19,
+      23,
+      34
+    ]
+  },
+  "discount_rules": [
+    {
+      "type": "all",
+      "method": "percent",
+      "amount": "25.0000"
+    }
+  ],
+  "is_group_for_guests": true
+}
+
+###
+
+//  Get a Count of Customer Groups
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customer-groups/getacountofcustomergroups
+GET {{url}}/customer_groups/count
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

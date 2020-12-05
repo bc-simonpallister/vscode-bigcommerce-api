@@ -1,0 +1,67 @@
+@version=v2
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@customer_id=1
+
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2
+
+###
+
+//  Get All Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customers/getallcustomers
+GET {{url}}/customers
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create a New Customer
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customers/createanewcustomer
+POST {{url}}/customers
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "company": "BigCommerce",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "phone": "1234567890"
+}
+
+###
+
+//  Update a Customer
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customers/updateacustomer
+PUT {{url}}/customers/{{customer_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "company": "",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "janedoes@email.com",
+  "phone": "",
+  "form_fields": [
+    {
+      "name": "License Id",
+      "value": ""
+    }
+  ],
+  "date_created": "Wed, 10 Jan 2018 21:02:23 +0000",
+  "date_modified": "Mon, 13 Aug 2018 18:11:41 +0000",
+  "store_credit": "0.0000",
+  "registration_ip_address": "64.183.182.114",
+  "customer_group_id": 1,
+  "notes": "",
+  "tax_exempt_category": "",
+  "reset_pass_on_login": false,
+  "accepts_marketing": true,
+  "addresses": {
+    "url": "https://api.bigcommerce.com/stores/e73sh90yy2/v2/customers/1/addresses",
+    "resource": "/customers/1/addresses"
+  }
+}
