@@ -1,0 +1,121 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3
+
+###
+
+//  Get All Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customers/customersget
+GET {{url}}/customers
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customers/customerspost
+POST {{url}}/customers
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+[
+  {
+    "email": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "company": "string",
+    "phone": "string",
+    "notes": "string",
+    "tax_exempt_category": "string",
+    "customer_group_id": 123,
+    "addresses": [
+      {
+        "first_name": "string",
+        "last_name": "string",
+        "company": "string",
+        "address1": "string",
+        "address2": "string",
+        "city": "string",
+        "state_or_province": "string",
+        "postal_code": "string",
+        "country_code": "string",
+        "phone": "string",
+        "address_type": "residential"
+      }
+    ],
+    "attributes": [
+      {
+        "attribute_id": 123,
+        "attribute_value": "string"
+      }
+    ],
+    "authentication": {
+      "force_password_reset": true,
+      "new_password": "string"
+    },
+    "accepts_product_review_abandoned_cart_emails": true,
+    "store_credit_amounts": [
+      {
+        "amount": 123
+      }
+    ]
+  }
+]
+
+###
+
+//  Update Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customers/customersput
+PUT {{url}}/customers
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+[
+  {
+    "email": "string",
+    "first_name": "string",
+    "last_name": "string",
+    "company": "string",
+    "phone": "string",
+    "notes": "string",
+    "tax_exempt_category": "string",
+    "customer_group_id": 123,
+    "addresses": [
+      {
+        "first_name": "string",
+        "last_name": "string",
+        "company": "string",
+        "address1": "string",
+        "address2": "string",
+        "city": "string",
+        "state_or_province": "string",
+        "postal_code": "string",
+        "country_code": "string",
+        "phone": "string",
+        "address_type": "residential"
+      }
+    ],
+    "attributes": [
+      {
+        "attribute_id": 123,
+        "attribute_value": "string"
+      }
+    ],
+    "authentication": {
+      "force_password_reset": true,
+      "new_password": "string"
+    },
+    "accepts_product_review_abandoned_cart_emails": true,
+    "store_credit_amounts": [
+      {
+        "amount": 123
+      }
+    ]
+  }
+]
+
+###
+//  Delete Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customers/customersdelete
+delete {{url}}/customers?id:in=
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
