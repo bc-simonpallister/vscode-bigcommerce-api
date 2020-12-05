@@ -1,0 +1,1 @@
+# BigCommerce API for VSCode
