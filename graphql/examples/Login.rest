@@ -9,21 +9,8 @@ Authorization: Bearer {{$dotenv GRAPHQL_TOKEN}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
-query CategoryTree3LevelsDeep {
-  site {
-    categoryTree {
-      ...CategoryFields
-      children {
-        ...CategoryFields
-        children {
-          ...CategoryFields
-        }
-      }
-    }
+mutation Login($email: String!, $pass: String!) {
+  login(email: $email, password: $pass) {
+    result
   }
-}
-fragment CategoryFields on CategoryTreeItem {
-  name
-  path
-  entityId
 }

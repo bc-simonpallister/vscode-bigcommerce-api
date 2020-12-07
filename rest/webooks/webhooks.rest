@@ -1,0 +1,60 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@id=1
+
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks
+
+###
+
+//  Get All Webhooks
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/getallwebhooks
+GET {{url}}/hooks
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create a Webhook
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/createwebhooks
+POST {{url}}/hooks
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "scope": "store/order/*",
+  "destination": "",
+  "headers": {}
+}
+
+###
+
+//  Get a Webhook
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/getwebhook
+GET {{url}}/hooks/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Update a Webhook
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/updateawebhook
+PUT {{url}}/hooks/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "scope": "store/cart/lineItem/*",
+  "destination": "https://myapp.herokuapp.com/",
+  "is_active": true,
+  "headers": {
+    "User-Name": "Hello",
+    "Password": "Goodbye"
+  }
+}
+
+###
+//  Delete a Webhook
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/deleteawebhook
+delete {{url}}/hooks/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
