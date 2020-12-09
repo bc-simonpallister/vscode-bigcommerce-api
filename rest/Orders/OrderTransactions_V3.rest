@@ -1,0 +1,13 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@order_id=166
+
+//  https://developer.bigcommerce.com/api-reference/store-management/order-transactions/transactions
+
+###
+//  Get an Order
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/getanorder
+GET {{url}}/orders/{{order_id}}/transactions
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

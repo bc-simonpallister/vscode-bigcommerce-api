@@ -1,0 +1,94 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@product_id=138
+
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/
+
+//  Get All Products
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/getproducts
+GET {{url}}/catalog/products
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+//  Get a Product
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/getproductbyid
+GET {{url}}/catalog/products/{{product_id}}?include=images
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create a Product
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/createproduct
+POST {{url}}/catalog/products
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Create product with image",
+  "price": "10.00",
+  "categories": [
+    23
+  ],
+  "weight": 4,
+  "type": "physical",
+  "images": [
+    {
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Anglel_Bless_Legendary_Hills_1_m%C4%9Bs%C3%ADc_st%C3%A1%C5%99%C3%AD.jpg"
+    }
+  ]
+}
+###
+
+//  Update a Product
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/updateproduct
+PUT {{url}}/catalog/products/{{product_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "description": "<p>The perfect beach towel: thin, lightweight and highly absorbent. Crafted by Fog Linen in Japan using soft Lithuanian linen, each towel rolls up for compact stowaway. Dry off after a refreshing dip in the ocean and stretch out on it for a sun bath. The thinness ensures a quick dry so you can have it rolled back up in your bag without soaking your belongings.</p>\\r\\n<p>Measures 75 x 145 cm/29.5 x 57 in</p>\\r\\n<p>100% Linen</p>",
+  "name": "Fog Linen Chambray Towel - Beige Stripe",
+  "sku": "SLCTBS",
+  "type": "physical"
+}
+
+###
+
+//  Update Products (Batch)
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/updateproducts
+PUT {{url}}/catalog/products/{{product_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+[
+  {
+    "description": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel metus ac est egestas porta sed quis erat. Integer id nulla massa. Proin vitae enim nisi. Praesent non dignissim nulla. Nulla mattis id massa ac pharetra. Mauris et nisi in dolor aliquam sodales. Aliquam dui nisl, dictum quis leo sit amet, rutrum volutpat metus. Curabitur libero nunc, interdum ac libero non, tristique porttitor metus. Ut non dignissim lorem, in vestibulum leo. Vivamus sodales quis turpis eget.</span></p>",
+    "id": 123,
+    "name": "T-Shirt",
+    "sku": "TS-1"
+  },
+  {
+    "description": "<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel metus ac est egestas porta sed quis erat. Integer id nulla massa. Proin vitae enim nisi. Praesent non dignissim nulla. Nulla mattis id massa ac pharetra. Mauris et nisi in dolor aliquam sodales. Aliquam dui nisl, dictum quis leo sit amet, rutrum volutpat metus. Curabitur libero nunc, interdum ac libero non, tristique porttitor metus. Ut non dignissim lorem, in vestibulum leo. Vivamus sodales quis turpis eget.</span></p>",
+    "id": 456,
+    "name": "Polo Shirt",
+    "sku": "PS-1"
+  }
+]
+
+###
+//  Delete a Product
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/deleteproductbyid
+delete {{url}}/catalog/products/{{product_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+//  Delete all Products
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/deleteproducts
+delete {{url}}/catalog/products/
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+

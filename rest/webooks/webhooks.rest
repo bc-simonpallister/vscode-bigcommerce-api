@@ -1,6 +1,6 @@
 @url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
 @version=v3
-@id=1
+@id=21141669
 
 //  https://developer.bigcommerce.com/api-reference/store-management/webhooks
 
@@ -21,9 +21,11 @@ X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
 
 {
-  "scope": "store/order/*",
-  "destination": "",
-  "headers": {}
+  "scope": "store/customer/updated",
+  "destination": "https://store-credits.loca.lt/customer",
+  "headers": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoX3Rva2VuIjoiY2x2ZGk5em95a292YmFxMHJiYXA2NTdhNm4wajlleiIsInN0b3JlX2lkIjoiZTczc2g5MHl5MiIsImlhdCI6MTYwNzMyNTUwNSwiZXhwIjoxNjA5OTE3NTA1fQ.qHN3wASEzospkUsM-1x9AIi1D74cC2rJqBUbgW4lOu0"
+  }
 }
 
 ###
@@ -55,6 +57,6 @@ Content-Type: application/json
 ###
 //  Delete a Webhook
 //  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/deleteawebhook
-delete {{url}}/hooks/{{id}}
+DELETE {{url}}/hooks/{{id}}
 X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
