@@ -50,7 +50,7 @@ Content-Type: application/json
 ###
 //  Delete Customer Attribute Values
 //  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attribute-values/customersattributevaluesdelete
-delete {{url}}/customers/attributes?id:in={{attribute_value_id}}
+delete {{url}}/customers/attributes-values?id:in={{attribute_value_id}}
 X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
 

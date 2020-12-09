@@ -1,0 +1,142 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@order_id=1
+
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders
+
+###
+
+//  Get All Orders
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/getallorders
+GET {{url}}/orders
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get an Order
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/getanorder
+GET {{url}}/orders/{{order_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create an Order
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/createanorder
+POST {{url}}/orders
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "billing_address": {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "street_1": "123 Main Street",
+    "city": "Austin",
+    "state": "Texas",
+    "zip": "78751",
+    "country": "United States",
+    "country_iso2": "US",
+    "email": "janedoe@email.com"
+  },
+  "products": [
+    {
+      "name": "BigCommerce Coffee Mug",
+      "quantity": 1,
+      "price_inc_tax": 50,
+      "price_ex_tax": 45
+    }
+  ]
+}
+###
+
+//  Update an Order
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/updateanorder
+PUT {{url}}/orders/{{order_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "status_id": 0,
+  "customer_id": 11,
+  "billing_address": {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "street_1": "123 Main Street",
+    "city": "Austin",
+    "state": "Texas",
+    "zip": "78751",
+    "country": "United States",
+    "country_iso2": "US",
+    "email": "janedoe@email.com"
+  },
+  "shipping_addresses": [
+    {
+      "first_name": "Trish",
+      "last_name": "Test",
+      "company": "Acme Pty Ltd",
+      "street_1": "666 Sussex St",
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "78751",
+      "country": "United States",
+      "country_iso2": "US",
+      "email": "elsie@example.com"
+    }
+  ],
+  "products": [
+    {
+      "name": "BigCommerce Poster",
+      "quantity": 1,
+      "price_inc_tax": 10.98,
+      "price_ex_tax": 10
+    },
+    {
+      "name": "BigCommerce Coffee Mug",
+      "quantity": 1,
+      "price_inc_tax": 50,
+      "price_ex_tax": 45
+    },
+    {
+      "product_id": 184,
+      "product_options": [
+        {
+          "id": 200,
+          "value": "180"
+        },
+        {
+          "id": 230,
+          "value": "192"
+        }
+      ]
+    }
+  ]
+}
+
+###
+//  Get a count of Orders
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/getallorders
+GET {{url}}/orders
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Archive an Order
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/deleteanorder
+DELETE {{url}}/orders/{{order_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Arachive all Orders
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/deleteallorders
+DELETE {{url}}/orders
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
