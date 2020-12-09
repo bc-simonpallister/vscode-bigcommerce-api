@@ -1,0 +1,51 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@attribute_id=1
+
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attributes
+
+###
+
+//  Get All Customer Atributes
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attributes/customersattributesget
+GET {{url}}/customers/attributes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create Customer Attributes
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attributes/customersattributespost
+POST {{url}}/customers/attributes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+[
+  {
+    "name": "Date Joined",
+    "type": "date"
+  }
+]
+
+###
+
+//  Update Customer Atributes
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attributes/customersattributesput
+PUT {{url}}/customers/attributes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+[
+  {
+    "name": "Date Joined",
+    "id": 1
+  }
+]
+
+###
+//  Delete Customer Attributes
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attributes/customersattributesdelete
+delete {{url}}/customers/attributes?id:in={{attribute_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
