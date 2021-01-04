@@ -1,0 +1,58 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@uuid=5d2c3c3a-6578-4376-a587-f06f9a9c27b9
+
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget-template
+
+###
+
+//  Get All Widget Templates
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget-template/getwidgettemplates
+GET {{url}}/content/widget-templates
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get a Widget Template
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget-template/getwidgettemplate
+GET {{url}}/content/widget-templates/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create an Widget Template
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget-template/createwidgettemplate
+POST {{url}}/content/widget-templates
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Header Images",
+  "template": "{{#each images}}<a href='{{image_url}}'><img src={{image_source}} style='width:33.3%'/></a>{{/each}}"
+}
+
+###
+//  Update a Widget Template
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget-template/updatewidgettemplate
+PUT {{url}}/content/widget-templates/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Header Images",
+  "template": "{{#each images}}<a href='{{image_url}}'><img src={{image_source}} style='width:33.3%'/></a>{{/each}}",
+  "create_new_version": true
+}
+
+###
+//  Delete a Widget Template
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget-template/deletewidgettemplate
+DELETE {{url}}/content/widget-templates/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

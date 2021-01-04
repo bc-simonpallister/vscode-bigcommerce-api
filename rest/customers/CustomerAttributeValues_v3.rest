@@ -1,6 +1,7 @@
 @url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
 @version=v3
 @attribute_value_id=1
+@customer_id=77
 
 //  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attribute-values
 
@@ -8,7 +9,7 @@
 
 //  Get All Customer Atribute Values
 //  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-attribute-values/customersattributevaluesget
-GET {{url}}/customers/attribute-values
+GET {{url}}/customers/attribute-values?customer_id:in={{customer_id}}
 X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
 
@@ -22,28 +23,9 @@ Content-Type: application/json
 
 [
   {
-    "attribute_id": -52528392,
-    "value": "aliqua",
-    "customer_id": 12990306,
-    "id": 47143304
-  },
-  {
-    "attribute_id": -8263909,
-    "value": "n",
-    "customer_id": 1122433,
-    "id": -34305734
-  },
-  {
-    "attribute_id": -62186196,
-    "value": "",
-    "customer_id": 10906989,
-    "id": 21175547
-  },
-  {
-    "attribute_id": -68742149,
-    "value": "l",
-    "customer_id": -74084818,
-    "id": 99359610
+    "attribute_id": 3,
+    "value": "100",
+    "customer_id": 77
   }
 ]
 

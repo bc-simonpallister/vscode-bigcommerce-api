@@ -1,0 +1,63 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@id=2
+
+
+###
+
+//  Get Coupon Codes
+GET {{url}}/promotions/{{id}}/codes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create a Coupon Code
+
+POST {{url}}/promotions/{{id}}/codes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "code": "JBTEST",
+  "max_uses": 1,
+  "max_uses_per_customer": 1
+}
+###
+
+//  Update a Promotions
+PUT {{url}}/promotions/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "JB test 4 - excludes homewares",
+  "redemption_type": "COUPON",
+  "rules": [
+    {
+      "action": {
+        "cart_items": {
+          "discount": {
+            "fixed_amount": "100"
+          },
+          "items": {
+            "not": {
+              "categories": [
+                41
+              ]
+            }
+          }
+        }
+      },
+      "apply_once": true,
+      "stop": true
+    }
+  ]
+}
+
+###
+//  Delete a Webhook
+//  https://developer.bigcommerce.com/api-reference/store-management/webhooks/webhooks/deleteawebhook
+DELETE {{url}}/hooks/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json

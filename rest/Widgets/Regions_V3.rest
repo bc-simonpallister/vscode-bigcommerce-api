@@ -1,0 +1,14 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@templateFile=pages/home
+
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/regions/
+
+###
+
+//  Get Theme Regios
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/regions/getcontentregions
+GET {{url}}/content/regions?templateFile={{templateFile}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

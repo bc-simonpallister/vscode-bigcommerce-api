@@ -1,0 +1,56 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@cartid=1bcd5fe6-ca5b-446d-87f4-2745b00adb72
+isTaxIncluded: true
+
+
+//  https://developer.bigcommerce.com/api-reference/store-management/carts
+
+###
+
+//  Get a Cart
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart/getacart
+GET {{url}}/carts/{{cartid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Create a Cart
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart/createacart
+POST {{url}}/carts
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "line_items": [
+    {
+      "quantity": 5,
+      "product_id": 191
+    }
+  ]
+}
+
+###
+//  Update a Customer ID
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart/updateacart
+PUT {{url}}/carts/{{cartid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customer_id": 5
+}
+###
+//  Delete a Cart
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart/updateacart
+PUT {{url}}/carts/{{cartid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customer_id": 5
+}

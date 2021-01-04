@@ -1,0 +1,77 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@channel_id=1
+
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channels
+
+###
+
+//  Get All Channels
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channels/listchannels
+GET {{url}}/channels
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get a Channel
+//  https://developer.bigcommerce.com/api-reference/store-management/orders/orders/getanorder
+GET {{url}}/channels/{{channel_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create an Channel
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channels/createchannel
+POST {{url}}/channels
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Additional Headless Storefront",
+  "type": "storefront",
+  "platform": "custom",
+  "external_id": "002",
+  "is_enabled": true,
+  "is_listable_from_ui": true,
+  "is_visible": true
+}
+
+###
+//  Update a channel
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channels/updatechannel
+PUT {{url}}/channels/{{channel_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "My Store - US",
+  "external_id": "002",
+  "is_enabled": true,
+  "status": "connected",
+  "is_listable_from_ui": true,
+  "is_visible": true,
+  "config_meta": {
+    "app": {
+      "id": 24483,
+      "sections": [
+        {
+          "title": "Overview",
+          "query_path": "overview"
+        },
+        {
+          "title": "Import",
+          "query_path": "import"
+        },
+        {
+          "title": "Settings",
+          "query_path": "settings"
+        }
+      ]
+    }
+  }
+}

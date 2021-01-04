@@ -1,0 +1,53 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@channel_id=463192
+
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-site
+
+
+###
+//  Get a Channel Site
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-site/get-channel-site
+GET {{url}}/channels/{{channel_id}}/site
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create a Channel site
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-site/postchannelsite
+POST {{url}}/channels/{{channel_id}}/site
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "https://myheadlesssite.com/"
+}
+
+###
+//  Update a channel site
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-site/put-channel-site
+PUT {{url}}/channels/{{channel_id}}/site
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "http://kittens.mybigcommerce.com/",
+  "channel_id": 123
+}
+
+###
+
+//  Delete a Channel site
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-site/postchannelsite
+DELETE {{url}}/channels/{{channel_id}}/site
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "https://example.com/"
+}

@@ -22,8 +22,8 @@ Content-Type: application/json
 
 [
   {
-    "name": "Date Joined",
-    "type": "date"
+    "name": "Store Credit Balance",
+    "type": "number"
   }
 ]
 

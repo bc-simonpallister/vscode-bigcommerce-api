@@ -1,6 +1,6 @@
 @url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
 @version=v3
-@id=21141669
+@id=21164010
 
 //  https://developer.bigcommerce.com/api-reference/store-management/webhooks
 
@@ -21,11 +21,8 @@ X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
 
 {
-  "scope": "store/customer/updated",
-  "destination": "https://store-credits.loca.lt/customer",
-  "headers": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoX3Rva2VuIjoiY2x2ZGk5em95a292YmFxMHJiYXA2NTdhNm4wajlleiIsInN0b3JlX2lkIjoiZTczc2g5MHl5MiIsImlhdCI6MTYwNzMyNTUwNSwiZXhwIjoxNjA5OTE3NTA1fQ.qHN3wASEzospkUsM-1x9AIi1D74cC2rJqBUbgW4lOu0"
-  }
+  "scope": "store/cart/lineItem/*",
+  "destination": "https://cart-stream.loca.lt/listen"
 }
 
 ###
@@ -46,12 +43,7 @@ Content-Type: application/json
 
 {
   "scope": "store/cart/lineItem/*",
-  "destination": "https://myapp.herokuapp.com/",
-  "is_active": true,
-  "headers": {
-    "User-Name": "Hello",
-    "Password": "Goodbye"
-  }
+  "destination": "https://cart-stream.loca.lt/listen"
 }
 
 ###

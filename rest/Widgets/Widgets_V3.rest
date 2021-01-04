@@ -1,0 +1,84 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@uuid=5d2c3c3a-6578-4376-a587-f06f9a9c27b9
+
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget
+
+###
+
+//  Get All Widgets
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget/getwidgets
+GET {{url}}/content/widgets
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get a Widget
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget/getwidget
+GET {{url}}/content/widgets/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create an Widget
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget/createwidget
+POST {{url}}/content/widgets
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Header Images",
+  "template": "{{#each images}}<a href='{{image_url}}'><img src={{image_source}} style='width:33.3%'/></a>{{/each}}",
+  "widget_configuration": {
+    "images": [
+      {
+        "image_source": "https://cdn11.bigcommerce.com/s-n0i50vy/images/stencil/1280x1280/products/109/361/kinfolkessentialissue_1024x1024__22507.1456436715.jpg?c=2&imbypass=on"
+      },
+      {
+        "image_source": "https://cdn11.bigcommerce.com/s-n0i50vy/images/stencil/500x659/products/85/282/livingwithplants_grande__26452.1456436666.jpg?c=2&imbypass=on"
+      },
+      {
+        "image_source": "https://cdn11.bigcommerce.com/s-n0i50vy/images/stencil/1280x1280/products/109/361/kinfolkessentialissue_1024x1024__22507.1456436715.jpg?c=2&imbypass=on"
+      }
+    ]
+  },
+  "widget_template_uuid": "f8459145-da8f-4d98-93e4-83aa47da61c6"
+}
+
+###
+//  Update a Widget
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget/updatewidget
+PUT {{url}}/content/widgets/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Header Images",
+  "widget_configuration": {
+    "images": [
+      {
+        "image_source": "https://cdn11.bigcommerce.com/s-n0i50vy/images/stencil/1280x1280/products/109/361/kinfolkessentialissue_1024x1024__22507.1456436715.jpg?c=2&imbypass=on"
+      },
+      {
+        "image_source": "https://cdn11.bigcommerce.com/s-n0i50vy/images/stencil/500x659/products/85/282/livingwithplants_grande__26452.1456436666.jpg?c=2&imbypass=on"
+      },
+      {
+        "image_source": "https://cdn11.bigcommerce.com/s-n0i50vy/images/stencil/1280x1280/products/109/361/kinfolkessentialissue_1024x1024__22507.1456436715.jpg?c=2&imbypass=on"
+      }
+    ]
+  },
+  "widget_template_uuid": "f8459145-da8f-4d98-93e4-83aa47da61c6"
+}
+
+###
+//  Delete a Widget
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/widget/deletewidget
+DELETE {{url}}/content/widgets/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

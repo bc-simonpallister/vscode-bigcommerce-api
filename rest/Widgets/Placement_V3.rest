@@ -1,0 +1,63 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@uuid=68e53119-e457-47f8-96f7-bcc37878b2dc
+
+//https://developer.bigcommerce.com/api-reference/store-management/widgets/placement
+
+###
+
+//  Get All Placements
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/placement/getplacements
+GET {{url}}/content/placements
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get a Placement
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/placement/getplacement
+GET {{url}}/content/placements/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create a Placement
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/placement/createplacement
+POST {{url}}/content/placements
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "widget_uuid": "a8940709-5655-4401-a341-62c44e3180b2",
+  "entity_id": "21",
+  "template_file": "pages/category",
+  "status": "active",
+  "sort_order": 1,
+  "region": "category_header_banner"
+}
+
+###
+//  Update a Placement
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/placement/updateplacement
+PUT {{url}}/content/placements/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "sort_order": 1,
+  "region": "home_header_image",
+  "template_file": "pages/home",
+  "status": "active"
+}
+
+###
+//  Delete a Placement
+//  https://developer.bigcommerce.com/api-reference/store-management/widgets/placement/deleteplacement
+DELETE {{url}}/content/placements/{{uuid}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

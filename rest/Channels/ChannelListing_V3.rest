@@ -1,0 +1,91 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@channel_id=463192
+@listing_id=619964681
+
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-listings/listchannellistings
+
+
+###
+//  Get Channel Listings
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-listings/listchannellistings
+GET {{url}}/channels/{{channel_id}}/listings
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###//  Get a Channel Listings
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-listings/getchannellisting
+GET {{url}}/channels/{{channel_id}}/listings/{{listing_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create Channel Lising
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-listings/createchannellistings
+POST {{url}}/channels/{{channel_id}}/listings
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "product_id": 117,
+    "state": "active",
+    "name": "baseball hat",
+    "description": "Baseball hat with your favorite team's name.",
+    "external_id": "listing1",
+    "variants": [
+      {
+        "variant_id": 82,
+        "name": "blue baseball bat",
+        "product_id": 117,
+        "state": "disabled",
+        "external_id": "Var1"
+      },
+      {
+        "variant_id": 83,
+        "product_id": 117,
+        "state": "active",
+        "external_id": "Var2"
+      }
+    ]
+  }
+]
+###
+//  Update channel lising
+//  https://developer.bigcommerce.com/api-reference/store-management/channels/channel-listings/updatechannellistings
+PUT {{url}}/channels/{{channel_id}}/listings
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "product_id": 111,
+    "listing_id": 12180407,
+    "state": "pending",
+    "variants": [
+      {
+        "product_id": 112,
+        "variant_id": 77,
+        "state": "error"
+      }
+    ]
+  },
+  {
+    "product_id": 111,
+    "listing_id": 11511867,
+    "state": "deleted",
+    "variants": [
+      {
+        "product_id": 111,
+        "variant_id": 74,
+        "state": "error"
+      }
+    ]
+  }
+]
+

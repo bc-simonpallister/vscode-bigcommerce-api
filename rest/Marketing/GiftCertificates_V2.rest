@@ -1,0 +1,78 @@
+@version=v2
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@id=1
+
+//  https://developer.bigcommerce.com/api-reference/store-management/marketing/gift-certificates/getagiftcertificate
+
+###
+
+//  Get All Gift Certificates
+//  https://developer.bigcommerce.com/api-reference/store-management/marketing/gift-certificates/getagiftcertificate
+GET {{url}}/gift_certificates
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get a Gift Certificate
+//  https://developer.bigcommerce.com/api-reference/store-management/marketing/gift-certificates/getagiftcertificate
+GET {{url}}/gift_certificates/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Create a Gift Certificate
+//  https://developer.bigcommerce.com/api-reference/store-management/marketing/gift-certificates/createagiftcertificate
+POST {{url}}/gift_certificates
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "template": "Loyalty Bonus",
+  "message": "Congratulations!",
+  "amount": "100",
+  "to_name": "Simon Guest",
+  "to_email": "simon.pallister+guest@bigcommerce.com",
+  "from_name": "Simon",
+  "from_email": "simon@pallisters.net",
+  "code": "XQ2-1R7-7C1-Q0C1",
+  "status": "active"
+}
+
+###
+//  Update a Gift Certificate
+//  https://developer.bigcommerce.com/api-reference/store-management/marketing/gift-certificates/updateagiftcertificate
+PUT {{url}}/gift_certificates/{{id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "My Store - US",
+  "external_id": "002",
+  "is_enabled": true,
+  "status": "connected",
+  "is_listable_from_ui": true,
+  "is_visible": true,
+  "config_meta": {
+    "app": {
+      "id": 24483,
+      "sections": [
+        {
+          "title": "Overview",
+          "query_path": "overview"
+        },
+        {
+          "title": "Import",
+          "query_path": "import"
+        },
+        {
+          "title": "Settings",
+          "query_path": "settings"
+        }
+      ]
+    }
+  }
+}

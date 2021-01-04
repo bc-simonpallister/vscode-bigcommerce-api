@@ -1,0 +1,44 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@cartId=35298dd6-43d9-4885-afcd-cebdaa2ee3a5
+@itemId=41585ff7-0530-4b85-8c06-31fce570d1bd
+
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart-items
+
+###
+//  Add Cart Line Items
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart-items/addcartlineitem
+POST {{url}}/carts/{{cartId}}/items
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "custom_items": [
+    {
+      "sku": "abc-123",
+      "name": "Discount",
+      "quantity": 1,
+      "list_price": -10
+    }
+  ]
+}
+
+###
+//  Update a Cart Line Item
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart-items/updatecartlineitem
+PUT {{url}}/carts/{{cartId}}/items/{{itemId}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customer_id": 5
+}
+###
+//  Delete a Cart Item
+//  https://developer.bigcommerce.com/api-reference/store-management/carts/cart-items/deletecartlineitem
+DELETE {{url}}/carts/{{cartId}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json

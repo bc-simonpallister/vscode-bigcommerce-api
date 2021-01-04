@@ -13,10 +13,10 @@ Content-Type: application/json
 
 
 {
-  "channel_id": 1,
+  "channel_id": 507787,
   "expires_at": 1609372800,
   "allowed_cors_origins": [
-    "https://v3.bcdemoshop.com.au/"
+    "https://myheadlesssite.com"
   ]
 }
 
