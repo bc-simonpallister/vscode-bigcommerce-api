@@ -9,6 +9,3 @@ To get started, create a copy of .env.template and call it .env
 
 Then enter the credentials from your store
 
-Requires  read/write to Customer domain
-          read to orders domain
-          read to orders transactions domain

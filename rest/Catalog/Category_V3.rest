@@ -1,0 +1,77 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@category_id=25
+
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/createcategory
+
+//  Get All Categories
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/getcategories
+GET {{url}}/catalog/categories  
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+//  Get a Category
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/getproductbyid
+GET {{url}}/catalog/categories/{{category_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create a Category
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/createcategory
+POST {{url}}/catalog/categories
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "custom_url": {
+    "is_customized": false,
+    "url": "/bath/"
+  },
+  "default_product_sort": "use_store_settings",
+  "description": "<p>We offer a wide variety of products perfect for relaxing</p>",
+  "image_url": "https://cdn8.bigcommerce.com/s-123456/product_images/d/fakeimage.png",
+  "is_visible": true,
+  "layout_file": "category.html",
+  "meta_keywords": [],
+  "name": "Bath",
+  "sort_order": 3,
+  "views": 1050
+}
+###
+
+//  Update a Category
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/updatecategory
+PUT {{url}}/catalog/categories/{{category_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+{
+  "description": "<h1>Browse our full collection</h1>"
+}
+
+###
+
+//  Get Category Tree
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/getcategorytree
+GET {{url}}/catalog/categories/tree
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+//  Delete a Category
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/deletecategorybyid
+delete {{url}}/catalog/categories/{{category_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+//  Delete all Categories
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/category/deletecategories
+delete {{url}}/catalog/categories/
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+

@@ -6,7 +6,7 @@
 
 ###
 
-//  Get Theme Regios
+//  Get Theme Regions
 //  https://developer.bigcommerce.com/api-reference/store-management/widgets/regions/getcontentregions
 GET {{url}}/content/regions?templateFile={{templateFile}}
 X-Auth-token: {{$dotenv ACCESS_TOKEN}}
