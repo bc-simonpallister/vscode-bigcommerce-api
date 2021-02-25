@@ -1,0 +1,74 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v2
+@currency_id=2
+
+//  https://developer.bigcommerce.com/api-reference/store-management/currency-api/currencies/getcurrencies
+
+//  Get All Currencies
+//  https://developer.bigcommerce.com/api-reference/store-management/currency-api/currencies/getcurrencies
+GET {{url}}/currencies  
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Get a Currency
+//  https://developer.bigcommerce.com/api-reference/store-management/catalog/products/getproductbyid
+GET {{url}}/currencies/{{currency_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create a Currency
+//  https://developer.bigcommerce.com/api-reference/store-management/currency-api/currencies/postcurrencies
+POST {{url}}/currencies
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "country_iso2": "AU",
+  "currency_code": "AUD",
+  "currency_exchange_rate": "1.3885600000",
+  "auto_update": "false",
+  "location": "left",
+  "token": "$",
+  "decimal_token": ".",
+  "thousands_token": ",",
+  "decimal_places": 2
+}
+###
+
+//  Update a Currency
+//  https://developer.bigcommerce.com/api-reference/store-management/currency-api/currencies/updateacurrency
+PUT {{url}}/currencies/{{currency_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "auto_update": true,
+  "token_location": "left",
+  "decimal_token": ".",
+  "thousands_token": ",",
+  "decimal_places": 2,
+  "enabled": true,
+  "is_transactional": true
+}
+
+###
+//  Delete a Currency
+//  https://developer.bigcommerce.com/api-reference/store-management/currency-api/currencies/deleteacurrency
+delete {{url}}/currencies/{{currency_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+//  Delete all Currencies
+//  https://developer.bigcommerce.com/api-reference/store-management/currency-api/currencies/deletecurrencies
+delete {{url}}/currencies
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json

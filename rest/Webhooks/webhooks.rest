@@ -21,8 +21,8 @@ X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
 
 {
-  "scope": "store/cart/lineItem/*",
-  "destination": "https://cart-stream.loca.lt/listen"
+  "scope": "store/order/created",
+  "destination": "https://en8gpvhym5rs6z0.m.pipedream.net"
 }
 
 ###

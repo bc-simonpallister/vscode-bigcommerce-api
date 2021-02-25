@@ -1,0 +1,16 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@id=170
+
+###
+
+//  Capture a Payment
+POST {{url}}/orders/{{id}}/payment_actions/capture
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+//  Void a Payment Authorisation
+POST {{url}}/orders/{{id}}/payment_actions/capture
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json

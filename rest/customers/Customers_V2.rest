@@ -12,6 +12,14 @@ GET {{url}}/customers
 X-Auth-token: {{$dotenv ACCESS_TOKEN}}
 Content-Type: application/json
 Accept: application/json
+###
+
+//  Get A Customer
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customers/getacustomer
+GET {{url}}/customers/{{customer_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
 
 ###
 
@@ -65,3 +73,12 @@ Accept: application/json
     "resource": "/customers/1/addresses"
   }
 }
+
+###
+
+//  Get a Count Of Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v2/customers/getacountofcustomers
+GET {{url}}/customers/count
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json###
