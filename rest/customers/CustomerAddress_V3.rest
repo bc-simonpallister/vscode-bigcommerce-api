@@ -1,0 +1,74 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-addresses/
+
+###
+
+//  Get All Customer Addresses
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-addresses/customersaddressesget
+GET {{url}}/customers/addresses?customer_id:in=77
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+###
+
+//  Create Customer Address
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-addresses/customersaddressespost
+POST {{url}}/customers/addresses
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+[
+    {
+      "id": 16,
+      "address1": "555 East Street",
+      "address2": "",
+      "address_type": "residential",
+      "city": "Austin",
+      "company": "",
+      "country": "United States",
+      "country_code": "US",
+      "customer_id": 77,
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "phone": "1234567890",
+      "postal_code": "78751",
+      "state_or_province": "Texas"
+    }
+]
+
+###
+
+//  Update Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customers/customersput
+PUT {{url}}/customers/addresses
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+
+[
+  {
+    "id": 201,
+    "address1": "555 East Street",
+    "address2": "",
+    "address_type": "residential",
+    "city": "Austin",
+    "company": "",
+    "country": "United States",
+    "country_code": "US",
+    "customer_id": 77,
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "phone": "1234567890",
+    "postal_code": "78751",
+    "state_or_province": "Texas"
+  }
+]
+
+
+###
+//  Delete Customers
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customers/customersdelete
+delete {{url}}/customers?id:in=
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json

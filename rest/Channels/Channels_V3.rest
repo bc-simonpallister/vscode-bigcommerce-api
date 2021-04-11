@@ -1,6 +1,6 @@
 @version=v3
 @url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
-@channel_id=1
+@channel_id=594545
 
 //  https://developer.bigcommerce.com/api-reference/store-management/channels/channels
 
@@ -31,13 +31,13 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "Additional Headless Storefront",
-  "type": "storefront",
-  "platform": "custom",
-  "external_id": "002",
-  "is_enabled": true,
-  "is_listable_from_ui": true,
-  "is_visible": true
+    "is_listable_from_ui": true,
+    "is_visible": true,
+    "external_id": "",
+    "type": "storefront",
+    "platform": "custom",
+    "is_enabled": true,
+    "name": "Next.js Stackbit Storefront"
 }
 
 ###
@@ -49,29 +49,5 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "My Store - US",
-  "external_id": "002",
-  "is_enabled": true,
-  "status": "connected",
-  "is_listable_from_ui": true,
-  "is_visible": true,
-  "config_meta": {
-    "app": {
-      "id": 24483,
-      "sections": [
-        {
-          "title": "Overview",
-          "query_path": "overview"
-        },
-        {
-          "title": "Import",
-          "query_path": "import"
-        },
-        {
-          "title": "Settings",
-          "query_path": "settings"
-        }
-      ]
-    }
-  }
+  "url": "https://nextjs-commerce-bcdemo.vercel.app"
 }

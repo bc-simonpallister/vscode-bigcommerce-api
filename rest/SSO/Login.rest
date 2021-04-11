@@ -1,21 +1,11 @@
-@version=v3
-@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@url={{$dotenv STORE_DOMAIN}}/login/token/{{$dotenv GRAPHQL_TOKEN}}
 
 //  https://developer.bigcommerce.com/api-reference/store-management/tokens
 
 ###
 
-//  Create a token
-//  https://developer.bigcommerce.com/api-reference/store-management/tokens/api-token/createtoken
-POST {{url}}/storefront/api-token
-X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+POST {{url}}
 Content-Type: application/json
-
-
-{
-  "channel_id": 593847,
-  "expires_at": 1640869200
-}
 
 ###
 

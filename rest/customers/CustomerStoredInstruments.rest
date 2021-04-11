@@ -1,0 +1,12 @@
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@version=v3
+@customer_id=77
+
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-stored-instruments
+###
+
+//  Get Stored Instruments
+//  https://developer.bigcommerce.com/api-reference/store-management/customers-v3/customer-stored-instruments/liststoredinstruments
+GET {{url}}/customers/{{customer_id}}/stored-instruments
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json

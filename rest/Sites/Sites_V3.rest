@@ -1,0 +1,57 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@site_id=1009
+
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/
+
+
+###
+//  Get all Sites
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/getsites
+GET {{url}}/sites
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+
+###
+//  Get a Site
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/getsites
+GET {{url}}/sites/{{site_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+//  Create a Site
+// https://developer.bigcommerce.com/api-reference/store-management/sites/sites/post-site
+POST {{url}}/sites
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "http://store.example.com/",
+  "channel_id": 2
+}
+
+###
+//  Update a site
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/put-site
+PUT {{url}}/site/{{site_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "url": "http://localhost:3000"
+}
+
+###
+
+//  Delete a site
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/delete-site
+DELETE {{url}}/site/{{site_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+

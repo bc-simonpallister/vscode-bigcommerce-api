@@ -1,0 +1,31 @@
+POST {{$dotenv GRAPHQL_URL}}
+Authorization: Bearer {{$dotenv GRAPHQL_TOKEN}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+# Get a few products from the catalog
+# Stores in pre-launch or maintenance mode may reject queries.
+# Access from Control Panel > Advanced Settings > Storefront API Playground
+# or browse privately and query against https://buybutton.store/graphql
+query paginateProducts(
+  $pageSize: Int = 3
+  $cursor: String
+  # Use GraphQL variables to change the page size, or inject the endCursor as "cursor"
+  # to go to the next page!
+) {
+  site {
+    products (first: $pageSize, after:$cursor) {
+      pageInfo {
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          entityId
+          name
+        }
+      }
+    }
+  }
+}

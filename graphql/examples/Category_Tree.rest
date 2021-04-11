@@ -1,10 +1,9 @@
-@url={{$dotenv GRAPHQL_URL}}/graphql
 
 //  https://developer.bigcommerce.com/api-reference/storefront/graphql
 
 ###
 
-POST {{url}}
+POST {{$dotenv GRAPHQL_URL}}
 Authorization: Bearer {{$dotenv GRAPHQL_TOKEN}}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL

@@ -1,0 +1,81 @@
+@version=v2
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@page_id=2
+
+//  https://developer.bigcommerce.com/api-reference/store-management/store-content/pages
+
+
+###
+//  Get all Pages
+//  https://developer.bigcommerce.com/api-reference/store-management/store-content/pages/getallpages
+GET {{url}}/pages
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+
+###
+//  Get a Page
+//  https://developer.bigcommerce.com/api-reference/store-management/store-content/pages/getapage
+GET {{url}}/pages/{{page_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+// Create a Page
+// https://developer.bigcommerce.com/api-reference/store-management/store-content/pages/createapage
+POST {{url}}/pages
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 21,
+  "name": "service worker",
+  "body": "importScripts(\"https://mycdn.com/sw.js\");",
+  "is_visible": false,
+  "parent_id": 0,
+  "sort_order": 0,
+  "type": "raw",
+  "is_homepage": false,
+  "is_customers_only": false,
+  "search_keywords": "",
+  "has_mobile_version": true,
+  "mobile_body": "",
+  "content_type": "text/javascript",
+  "url": "/sw.js"
+}
+
+###
+//  Update a Page
+//  https://developer.bigcommerce.com/api-reference/store-management/store-content/pages/updateapage
+PUT {{url}}/pages/{{page_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "service worker",
+  "body": "importScripts(\"https://mycdn.com/sw.js\");",
+  "is_visible": false,
+  "parent_id": 0,
+  "sort_order": 0,
+  "type": "raw",
+  "is_homepage": false,
+  "is_customers_only": false,
+  "search_keywords": "",
+  "has_mobile_version": true,
+  "mobile_body": "",
+  "content_type": "text/javascript",
+  "url": "/sw.js"
+}
+
+###
+
+//  Delete a Page
+//  https://developer.bigcommerce.com/api-reference/store-management/store-content/pages/deleteapage
+DELETE {{url}}/pages/{{page_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+

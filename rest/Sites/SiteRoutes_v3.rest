@@ -1,0 +1,84 @@
+@version=v3
+@url=https://api.bigcommerce.com/stores/{{$dotenv STORE_ID}}/{{version}}
+@site_id=1009
+@route_id=11
+
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/site-routes/index-site-routes
+
+
+###
+//  Get a site's routes
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/site-routes/index-site-routes
+GET {{url}}/sites/{{site_id}}/routes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+
+###
+//  Get a Site Route
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/site-routes/get-site-route
+GET {{url}}/sites/{{site_id}}/routes/{{route_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+###
+
+// Create a Site Route
+// https://developer.bigcommerce.com/api-reference/store-management/sites/site-routes/post-site-route
+POST {{url}}/sites/{{site_id}}/routes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Brand",
+  "matching": "*",
+  "route": "/search/designers/{slug}"
+}
+
+###
+//  Update a sites routes
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/put-site
+PUT {{url}}/site/{{site_id}}/routes
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "id": 1,
+    "type": "product",
+    "matching": "*",
+    "route": "/products/{id}"
+  },
+  {
+    "type": "product",
+    "matching": "10",
+    "route": "/products?id={id}"
+  }
+]
+
+###
+//  Update a site route
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/site-routes/put-site-route
+PUT {{url}}/sites/{{site_id}}/routes/{{route_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "home",
+  "matching": "*",
+  "route": "/"
+}
+
+
+###
+
+//  Delete a site route
+//  https://developer.bigcommerce.com/api-reference/store-management/sites/sites/delete-site
+DELETE {{url}}/site/{{site_id}}/routes/{{route_id}}
+X-Auth-token: {{$dotenv ACCESS_TOKEN}}
+
